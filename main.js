@@ -1,3 +1,5 @@
+const socket = new WebSocket('ws://localhost:8080');
+
 const number = document.getElementById("number")
 const input = document.getElementById('last-issued-number')
 const numberLimit = document.getElementById('number-limit')
@@ -6,6 +8,7 @@ const nextButton = document.getElementById("next")
 const issueNumberButton = document.getElementById("issue-number")
 const resetButton = document.getElementById("reset")
 
+let data = JSON.parse(localStorage.getItem('data'))
 let current = parseInt(number.innerHTML)
 let lastIssued = parseInt(input.value)
 let limit = parseInt(numberLimit.value)
@@ -30,14 +33,20 @@ const reset = () => {
   actionEffects()
 }
 
+const sendMessage = (message) => {
+  socket.send(message);
+}
+
 const actionEffects = () => {
   saveToLocalHost()
   disableButton()
 }
 
 const saveToLocalHost = () => {
-  const data = {current, lastIssued, limit}
-  localStorage.setItem('data', JSON.stringify(data))
+  data = {current, lastIssued, limit}
+  const dataString = JSON.stringify(data)
+  localStorage.setItem('data', dataString)
+  sendMessage(dataString)
 }
 
 const calloutNumber = (number) => {
@@ -67,3 +76,22 @@ nextButton.addEventListener('click', next)
 issueNumberButton.addEventListener('click', issueNumber)
 resetButton.addEventListener('click', reset)
 numberLimit.addEventListener('change', actionEffects)
+
+socket.onopen = function(event) {
+  // Handle connection open
+  console.log(event)
+  number.innerHTML = data.current
+  input.value = data.lastIssued
+  numberLimit.value = data.limit
+  actionEffects()
+};
+
+socket.onmessage = function(event) {
+  // Handle received message
+  console.log(event)
+};
+
+socket.onclose = function(event) {
+  // Handle connection close
+  console.log(event)
+};

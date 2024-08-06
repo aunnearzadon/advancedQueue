@@ -2,8 +2,9 @@
   "name": "advancedqueue",
   "version": "1.0.0",
   "description": "simple queueing webpage",
-  "main": "index.js",
+  "main": "socket.js",
   "scripts": {
+    "start": "node socket.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -15,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/nodazra/advancedQueue/issues"
   },
-  "homepage": "https://github.com/nodazra/advancedQueue#readme"
+  "homepage": "https://github.com/nodazra/advancedQueue#readme",
+  "dependencies": {
+    "ws": "^8.18.0"
+  }
 }
