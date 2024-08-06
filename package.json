@@ -1,0 +1,19 @@
+{
+  "name": "advancedqueue",
+  "version": "1.0.0",
+  "description": "simple queueing webpage",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nodazra/advancedQueue.git"
+  },
+  "author": "Aunne Arzadon",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nodazra/advancedQueue/issues"
+  },
+  "homepage": "https://github.com/nodazra/advancedQueue#readme"
+}

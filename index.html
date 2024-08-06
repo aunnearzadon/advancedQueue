@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Queue</title>
+    <style>
+        body {
+            display: flex;
+            height: 100vh;
+            margin: 0;
+        }
+        .left, .right {
+            width: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .left {
+            flex-direction: column;
+        }
+        .left input, .left button {
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="left">
+        <button id="next" disabled>NEXT</button>
+        <label>Number Limit: </label>
+        <input type="number" placeholder="Number Limit" id="number-limit" min="0" value="0" />
+        <button id="issue-number">ISSUE NUMBER</button>
+        <label>Last number issued: </label>
+        <input type="number" placeholder="Last number issued" id="last-issued-number" min="0" value="0" readOnly/>
+        <button id="reset">RESET</button>
+    </div>
+    <div class="right">
+        <!-- Right side content -->
+        <div>
+          <h2>Calling</h2>
+          <h1 id="number">0</h1>
+        </div>
+    </div>
+    <script src="main.js" type="text/javascript"></script>
+  </body>
+</html>
